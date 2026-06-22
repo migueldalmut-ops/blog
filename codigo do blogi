@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog do Doguinho | Curiosidades e Dicas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f6f0;
+            color: #333;
+        }
+        header {
+            background-color: #ff9f43;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+        }
+        nav {
+            background-color: #ee5253;
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        article {
+            margin-bottom: 3rem;
+        }
+        article h2 {
+            color: #ee5253;
+            margin-top: 0;
+        }
+        .meta {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        aside {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+        aside h3 {
+            color: #ff9f43;
+            margin-top: 0;
+            border-bottom: 2px solid #ff9f43;
+            padding-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 1.2rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
 
+    <header>
+        <h1>🐾 Blog do Doguinho 🐾</h1>
+        <p>O espaço perfeito para quem é completamente apaixonado por cães!</p>
+    </header>
+
+    <nav>
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#linguagem">Linguagem Canina</a>
+        <a href="#cuidados">Dicas de Cuidados</a>
+    </nav>
+
+    <div class="container">
+        
+        <main>
+            <article id="curiosidades">
+                <h2>5 Curiosidades Incríveis que Você Não Sabia sobre Cães</h2>
+                <div class="meta">Postado em: 22 de Junho de 2026 | Por: Humano do Dog</div>
+                <p>Os cães são nossos companheiros há milhares de anos, mas eles ainda conseguem nos surpreender! Aqui estão alguns fatos fascinantes sobre os nossos peludos:</p>
+                <ul>
+                    <li><strong>O focinho é único:</strong> Assim como as impressões digitais dos humanos, a marca do focinho de cada cachorro é totalmente única.</li>
+                    <li><strong>Super audição:</strong> Eles conseguem ouvir sons quatro vezes mais distantes do que nós, humanos.</li>
+                    <li><strong>Eles sonham como nós:</strong> Se você já viu seu cão mexendo as patinhas ou resmungando enquanto dorme, saiba que ele está sonhando! Os padrões cerebrais deles durante o sono são muito parecidos com os nossos.</li>
+                    <li><strong>O sentido do tempo:</strong> Os cães conseguem perceber a diferença de tempo. Eles sabem quando você ficou fora por uma hora ou pelo dia inteiro devido à rotina e à diminuição do seu cheiro na casa.</li>
+                </ul>
+            </article>
