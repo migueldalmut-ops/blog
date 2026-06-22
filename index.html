@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cãopanheiro | O Blog dos Apaixonados por Cães</title>
+    <title>Cão de Raça | O Blog dos Apaixonados por Cães</title>
     <style>
         :root {
             --primary: #e67e22;
             --primary-dark: #d35400;
             --secondary: #2c3e50;
-            --bg: #f9f8f6;
+            --bg: #fdfbf7;
             --card-bg: #ffffff;
             --text: #34495e;
-            --accent: #27ae60;
-            --danger: #c0392b;
+            --accent: #2980b9;
         }
 
         * {
@@ -33,13 +32,19 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 3.5rem 1rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         header h1 {
             font-size: 3rem;
             margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
         }
 
         nav {
@@ -127,59 +132,55 @@
             margin-bottom: 0.5rem;
         }
 
-        .alert-box {
-            background-color: #fce4d6;
-            border-left: 5px solid var(--danger);
+        /* Abas Interativas de Raças */
+        .tabs-container {
+            background: #fcfcfc;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             padding: 1rem;
-            border-radius: 6px;
-            margin: 1rem 0;
+            margin-top: 1rem;
         }
 
-        .alert-box h4 {
-            color: var(--danger);
-            margin-bottom: 0.5rem;
+        .race-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .btn {
-            background-color: var(--primary);
-            color: white;
+        .race-btn {
+            background-color: #ecf0f1;
+            color: var(--secondary);
             border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
-            transition: background 0.2s, transform 0.1s;
+            transition: all 0.2s;
         }
 
-        .btn:hover {
-            background-color: var(--primary-dark);
+        .race-btn:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
         }
 
-        .btn:active {
-            transform: scale(0.98);
+        .race-btn.active {
+            background-color: var(--primary);
+            color: white;
         }
 
-        /* Área Interativa Especial */
-        .interactive-box {
-            background: #e8f4f8;
-            border-left: 5px solid #2980b9;
+        .race-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
         }
 
-        #fact-display {
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #2c3e50;
-            background: #fff;
-            padding: 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            border: 1px dashed #2980b9;
+        .race-content.active {
+            display: block;
         }
 
-        #quiz-result {
-            margin-top: 1rem;
-            font-weight: bold;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .sidebar-box {
@@ -189,6 +190,13 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-right: 5px solid var(--secondary);
+        }
+
+        .sidebar-box h3 {
+            color: var(--secondary);
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
         }
 
         footer {
@@ -203,161 +211,142 @@
 <body>
 
     <header>
-        <h1>🐾 Blog Cãopanheiro 🐾</h1>
-        <p>Tudo o que você precisa saber sobre a mente, a saúde e a alegria dos cães!</p>
+        <h1>🐾 Guia Cão de Raça 🐾</h1>
+        <p>Curiosidades fascinantes, ciência comportamental e tudo sobre as raças do mundo canino!</p>
     </header>
 
     <nav>
-        <a href="#super-fatos">Super Fatos</a>
-        <a href="#linguagem">Linguagem</a>
-        <a href="#saude">Saúde Animal</a>
-        <a href="#quiz">Desafio</a>
+        <a href="#guia-racas">Guia de Raças</a>
+        <a href="#super-fatos">Curiosidades Gerais</a>
+        <a href="#comportamento">Inteligência Canina</a>
     </nav>
 
     <div class="container">
         
         <main>
-            <!-- SEÇÃO 1: GERADOR DE CURIOSIDADES -->
-            <section id="super-fatos" class="card interactive-box">
+            <!-- SEÇÃO INTERATIVA: GUIA DE RAÇAS -->
+            <section id="guia-racas" class="card">
                 <span class="badge">Interativo</span>
-                <h2>Gerador de Curiosidades Caninas</h2>
-                <p>Clique no botão abaixo para descobrir fatos rápidos e impressionantes sobre a biologia dos cachorros!</p>
-                <div id="fact-display">Clique no botão abaixo para gerar uma curiosidade! 👇</div>
-                <button class="btn" onclick="generateFact()">Próxima Curiosidade 🐕</button>
-            </section>
-
-            <!-- SEÇÃO 2: LINGUAGEM COMPORTAMENTAL -->
-            <section id="linguagem" class="card">
-                <span class="badge">Comportamento</span>
-                <h2>Como Eles Falam: Desvendando Sinais Sociais</h2>
-                <p>Cachorros não usam palavras, mas o corpo deles fala o tempo todo. Entender essa linguagem evita acidentes e melhora a convivência.</p>
+                <h2>Explorador de Raças Caninas</h2>
+                <p>Cada raça tem sua própria história, função original e traços de personalidade marcantes. Clique em uma raça abaixo para abrir o perfil completo dela:</p>
                 
-                <h3>O Rabo e Seus Significados</h3>
-                <p>Não ache que rabo balançando é sempre sinal de amizade! Preste atenção na postura:</p>
-                <ul>
-                    <li><strong>Balanço relaxado e amplo (com o quadril junto):</strong> Felicidade pura e excitação positiva.</li>
-                    <li><strong>Balanço rígido, alto e rápido:</strong> Sinal de alerta, tensão ou dominância. Fique atento.</li>
-                    <li><strong>Rabo entre as pernas:</strong> Medo, submissão crônica ou dor.</li>
-                </ul>
+                <div class="tabs-container">
+                    <div class="race-buttons">
+                        <button class="race-btn active" onclick="showRace('border-collie', this)">Border Collie</button>
+                        <button class="race-btn" onclick="showRace('golden', this)">Golden Retriever</button>
+                        <button class="race-btn" onclick="showRace('caramelo', this)">Vira-Lata (SRD)</button>
+                        <button class="race-btn" onclick="showRace('pug', this)">Pug</button>
+                        <button class="race-btn" onclick="showRace('pastor', this)">Pastor Alemão</button>
+                    </div>
 
-                <h3>Olhar de Lado (Olho de Baleia)</h3>
-                <p>Quando um cão vira levemente a cabeça mas mantém os olhos fixos em você, mostrando a parte branca dos olhos, isso se chama "olho de baleia". É um sinal claro de que ele está muito estressado, desconfortável ou protegendo algum objeto/comida. Dê espaço a ele!</p>
-            </section>
+                    <!-- Conteúdo: Border Collie -->
+                    <div id="border-collie" class="race-content active">
+                        <h3>Border Collie 🧠</h3>
+                        <p><strong>Origem:</strong> Grã-Bretanha (Fronteira entre Escócia e Inglaterra).</p>
+                        <p><strong>Temperamento:</strong> Extremamente focado, energético, atlético e considerado a raça mais inteligente do planeta.</p>
+                        <p><strong>Fato Incrível:</strong> Eles foram criados para pastorear ovelhas usando apenas o "olhar hipnótico". Um Border Collie chamado Chaser ficou mundialmente famoso por conseguir memorizar o nome de mais de 1.000 brinquedos diferentes!</p>
+                    </div>
 
-            <!-- SEÇÃO 3: SAÚDE E PERIGOS -->
-            <section id="saude" class="card">
-                <span class="badge">Saúde & Bem-Estar</span>
-                <h2>Guia de Proteção: O que seu Cão Não Pode Comer</h2>
-                <p>O sistema digestivo dos cães funciona de forma muito diferente do nosso. Algumas coisas perfeitamente seguras para humanos são venenos letais para eles.</p>
-                
-                <div class="alert-box">
-                    <h4>⚠️ Alimentos Proibidos de Emergência:</h4>
-                    <ul>
-                        <li><strong>Chocolate:</strong> Possui teobromina. Quanto mais escuro o chocolate, mais perigoso ele é. Provoca convulsões e arritmia.</li>
-                        <li><strong>Uvas e Uvas Passas:</strong> Podem causar falência renal total e imediata em alguns cães, mesmo em quantidades mínimas.</li>
-                        <li><strong>Cebola e Alho:</strong> Contêm compostos que destroem os glóbulos vermelhos do sangue do pet, causando anemia profunda.</li>
-                        <li><strong>Adoçante Xilitol:</strong> Presente em doces "zero açúcar". Causa uma queda de glicose perigosíssima e danos ao fígado.</li>
-                    </ul>
+                    <!-- Conteúdo: Golden Retriever -->
+                    <div id="golden" class="race-content">
+                        <h3>Golden Retriever ☀️</h3>
+                        <p><strong>Origem:</strong> Escócia.</p>
+                        <p><strong>Temperamento:</strong> Gentil, dócil, confiável, brincalhão e extremamente amigável com crianças e outros animais.</p>
+                        <p><strong>Fato Incrível:</strong> A palavra "Retriever" significa "recuperador". Eles foram desenvolvidos para buscar aves que os caçadores abatiam sem estragar a presa. Eles têm uma característica chamada "boca macia", sendo capazes de carregar um ovo cru na boca sem quebrá-lo!</p>
+                    </div>
+
+                    <!-- Conteúdo: Vira-Lata -->
+                    <div id="caramelo" class="race-content">
+                        <h3>Sem Raça Definida (SRD) - O Caramelo 👑</h3>
+                        <p><strong>Origem:</strong> O mundo inteiro! É o resultado da mistura espontânea de várias raças ao longo das gerações.</p>
+                        <p><strong>Temperamento:</strong> Extremamente adaptável, resiliente, afetuoso e costuma ter uma gratidão imensa por quem o adota.</p>
+                        <p><strong>Fato Incrível:</strong> Graças à "variabilidade genética" (mistura de sangues), os vira-latas geralmente são muito mais resistentes a doenças hereditárias do que os cães de raça pura. Além disso, o "Vira-lata Caramelo" se tornou o verdadeiro patrimônio cultural do Brasil!</p>
+                    </div>
+
+                    <!-- Conteúdo: Pug -->
+                    <div id="pug" class="race-content">
+                        <h3>Pug 📜</h3>
+                        <p><strong>Origem:</strong> China Antiga.</p>
+                        <p><strong>Temperamento:</strong> Companheiro, calmo, charmoso e teimoso na medida certa. Adora uma soneca no sofá.</p>
+                        <p><strong>Fato Incrível:</strong> Os Pugs eram considerados animais sagrados na China imperial e viviam no luxo absoluto, protegidos por soldados. Suas rugas na testa eram selecionadas porque lembravam o caractere chinês para a palavra "Príncipe".</p>
+                    </div>
+
+                    <!-- Conteúdo: Pastor Alemão -->
+                    <div id="pastor" class="race-content">
+                        <h3>Pastor Alemão 🛡️</h3>
+                        <p><strong>Origem:</strong> Alemanha.</p>
+                        <p><strong>Temperamento:</strong> Corajoso, leal, protetor, vigilante e altamente focado no trabalho ou treinamento.</p>
+                        <p><strong>Fato Incrível:</strong> É uma das raças mais versáteis do mundo. Originalmente criado para cuidar de rebanhos, sua inteligência o transformou no cão policial, militar e de resgate número um do planeta. Eles conseguem memorizar tarefas extremamente complexas.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- SEÇÃO 4: QUIZ INTERATIVO -->
-            <section id="quiz" class="card interactive-box">
-                <span class="badge">Teste Seu Conhecimento</span>
-                <h2>Super Quiz Canino</h2>
-                <p>Afinal, de onde vem o suor dos cachorros? Como eles regulam a temperatura do corpo?</p>
-                
-                <form id="dogQuiz" onsubmit="checkQuiz(event)">
-                    <input type="radio" id="opt1" name="quiz" value="errado1">
-                    <label for="opt1">Pela pele do corpo inteiro, igual aos humanos.</label><br><br>
-                    
-                    <input type="radio" id="opt2" name="quiz" value="correto">
-                    <label for="opt2">Pelas almofadinhas das patas (coxins) e pela respiração (arfando).</label><br><br>
-                    
-                    <input type="radio" id="opt3" name="quiz" value="errado2">
-                    <label for="opt3">Os cães simplesmente não suam e não precisam se refrescar.</label><br><br>
-                    
-                    <button type="submit" class="btn">Verificar Resposta</button>
-                </form>
-                <div id="quiz-result"></div>
+            <!-- SEÇÃO 2: CURIOSIDADES SUPER LEGAIS -->
+            <section id="super-fatos" class="card">
+                <span class="badge">Super Fatos</span>
+                <h2>Informações Fantásticas do Mundo Canino</h2>
+                <p>Independente da raça, os cachorros possuem uma biologia e sentidos fantásticos que deixam qualquer cientista de queixo caído:</p>
+                <ul>
+                    <li><strong>Impressão Digital no Focinho:</strong> Assim como nós usamos as pontas dos dedos, os cães podem ser identificados pelo desenho único das linhas de seus focinhos. Dois cães nunca terão o mesmo nariz!</li>
+                    <li><strong>Eles Sentem o Tempo pelo Cheiro:</strong> Já reparou que seu cão sabe a hora exata que você vai chegar? Conforme as horas passam, o seu cheiro deixado na casa vai enfraquecendo. Eles aprendem a associar a quantidade exata de cheiro que resta no ar com o momento em que você abre a porta.</li>
+                    <li><strong>O Olfato é em 3D:</strong> O nariz dos cães consegue farejar de forma independente por cada narina. Isso significa que eles sabem exatamente se um cheiro veio da esquerda ou da direita, criando um mapa em 3D na mente deles.</li>
+                </ul>
+            </section>
+
+            <!-- SEÇÃO 3: INTELIGÊNCIA -->
+            <section id="comportamento" class="card">
+                <span class="badge">Ciência</span>
+                <h2>Como é Medida a Inteligência das Raças?</h2>
+                <p>O teste de inteligência mais famoso do mundo foi publicado pelo Dr. Stanley Coren no livro <em>"A Inteligência dos Cães"</em>. Ele divide a mente canina em três partes:</p>
+                <ol>
+                    <li><strong>Inteligência Instintiva:</strong> O que o cão já nasce sabendo fazer (como caçar, pastorear ou guardar).</li>
+                    <li><strong>Inteligência Adaptativa:</strong> A capacidade de resolver problemas sozinhos (como abrir portas ou descobrir onde um petisco caiu).</li>
+                    <li><strong>Trabalho e Obediência:</strong> A velocidade para aprender comandos dados por humanos. É nessa categoria que o Border Collie e o Poodle lideram os rankings!</li>
+                </ol>
             </section>
         </main>
 
-        <!-- BARRA LATERAL -->
+        <!-- BARRA LATERAL (SIDEBAR) -->
         <aside>
             <div class="sidebar-box">
-                <h3>As 5 Raças Mais Inteligentes 🧠</h3>
-                <p>De acordo com a psicologia canina, estas raças aprendem comandos com menos de 5 repetições:</p>
+                <h3>O Ranking das Raças 🏆</h3>
+                <p>As 5 raças que precisam de menos repetições para aprender um comando:</p>
                 <ol>
-                    <li>Border Collie</li>
-                    <li>Poodle</li>
-                    <li>Pastor Alemão</li>
-                    <li>Golden Retriever</li>
-                    <li>Doberman</li>
+                    <li><strong>Border Collie</strong></li>
+                    <li><strong>Poodle</strong></li>
+                    <li><strong>Pastor Alemão</strong></li>
+                    <li><strong>Golden Retriever</strong></li>
+                    <li><strong>Doberman</strong></li>
                 </ol>
             </div>
 
             <div class="sidebar-box">
-                <h3>A Verdade sobre a Idade 🎂</h3>
-                <p>Cães de porte grande envelhecem muito mais rápido! Um cão de raça gigante é considerado idoso aos 6 anos de idade, enquanto raças pequenas (como o Maltês) só chegam na terceira idade por volta dos 10 anos.</p>
-            </div>
-
-            <div class="sidebar-box">
-                <h3>Enriquecimento Mental 🧸</h3>
-                <p>Dar comida em brinquedos recheáveis ou espalhar grãos de ração pelo quintal cansa mais o cão do que uma caminhada longa! Estimular o olfato gasta muita energia mental.</p>
+                <h3>Dica Importante 💡</h3>
+                <p>Raças de focinho curto (como Pugs, Bulldogs e Shih Tzus) são chamadas de <strong>braquicefálicas</strong>. Elas têm muita dificuldade para respirar e resfriar o corpo. Nunca exercite esses cães em horários de sol forte!</p>
             </div>
         </aside>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Blog Cãopanheiro. Todos os direitos reservados. 🐶</p>
+        <p>&copy; 2026 Guia Cão de Raça. Feito para quem ama patinhas e focinhos. 🐾</p>
     </footer>
 
-    <!-- JAVASCRIPT FUNCIONAL -->
+    <!-- INTERAÇÃO JAVASCRIPT FUNCIONAL -->
     <script>
-        // Array de curiosidades para o gerador aleatório
-        const facts = [
-            "O olfato dos cães é tão poderoso que eles conseguem detectar o equivalente a uma colher de chá de açúcar diluída em duas piscinas olímpicas!",
-            "As impressões digitais dos cães ficam no focinho. O padrão de linhas do nariz de cada cachorro é único no mundo todo.",
-            "Os cães não enxergam apenas em preto e branco! Eles veem o mundo em tons de azul, amarelo e cinza.",
-            "O seu cachorro consegue ouvir sons quatro vezes mais distantes do que você consegue escutar.",
-            "Quando os cães dormem encolhidos, é um instinto antigo para proteger os órgãos vitais de predadores e manter o calor.",
-            "Um Border Collie chamado Chaser ficou famoso por conseguir identificar e buscar mais de 1.000 objetos diferentes pelo nome!"
-        ];
+        function showRace(raceId, button) {
+            // 1. Esconde todos os textos de raças
+            const contents = document.querySelectorAll('.race-content');
+            contents.forEach(content => content.classList.remove('active'));
 
-        function generateFact() {
-            const display = document.getElementById('fact-display');
-            const randomIndex = Math.floor(Math.random() * facts.length);
-            display.innerText = facts[randomIndex];
-        }
+            // 2. Remove a classe 'active' de todos os botões
+            const buttons = document.querySelectorAll('.race-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
 
-        function checkQuiz(event) {
-            event.preventDefault();
-            const options = document.getElementsByName('quiz');
-            let userChoice = "";
-            
-            for(let i = 0; i < options.length; i++) {
-                if(options[i].checked) {
-                    userChoice = options[i].value;
-                    break;
-                }
-            }
-
-            const resultDiv = document.getElementById('quiz-result');
-            
-            if (userChoice === "correto") {
-                resultDiv.innerText = "🎉 Exato! Eles transpiram um pouco pelas patinhas, mas sua maior fonte de resfriamento é abrindo a boca e arfando (língua para fora).";
-                resultDiv.style.color = "var(--accent)";
-            } else if (userChoice === "") {
-                resultDiv.innerText = "⚠️ Por favor, escolha uma opção antes de enviar!";
-                resultDiv.style.color = "orange";
-            } else {
-                resultDiv.innerText = "❌ Incorreto. Tente de novo! Lembre-se de como eles ficam quando correm bastante no calor.";
-                resultDiv.style.color = "var(--danger)";
-            }
+            // 3. Mostra o texto da raça clicada e ativa o botão correto
+            document.getElementById(raceId).classList.add('active');
+            button.classList.add('active');
         }
     </script>
 </body>
 </html>
-
