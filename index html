@@ -1,1 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cãopanheiro | O Blog dos Apaixonados por Cães</title>
+    <style>
+        :root {
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --secondary: #2c3e50;
+            --bg: #f9f8f6;
+            --card-bg: #ffffff;
+            --text: #34495e;
+            --accent: #27ae60;
+            --danger: #c0392b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav {
+            background-color: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        main {
+            flex: 2;
+            min-width: 320px;
+        }
+
+        aside {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+        }
+
+        .badge {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--primary-dark);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-box {
+            background-color: #fce4d6;
+            border-left: 5px solid var(--danger);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+
+        .alert-box h4 {
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Área Interativa Especial */
+        .interactive-box {
+            background: #e8f4f8;
+            border-left: 5px solid #2980b9;
+        }
+
+        #fact-display {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            background: #fff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border: 1px dashed #2980b9;
+        }
+
+        #quiz-result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .sidebar-box {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-right: 5px solid var(--secondary);
+        }
+
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🐾 Blog Cãopanheiro 🐾</h1>
+        <p>Tudo o que você precisa saber sobre a mente, a saúde e a alegria dos cães!</p>
+    </header>
+
+    <nav>
+        <a href="#super-fatos">Super Fatos</a>
+        <a href="#linguagem">Linguagem</a>
+        <a href="#saude">Saúde Animal</a>
+        <a href="#quiz">Desafio</a>
+    </nav>
+
+    <div class="container">
+        
+        <main>
+            <!-- SEÇÃO 1: GERADOR DE CURIOSIDADES -->
+            <section id="super-fatos" class="card interactive-box">
+                <span class="badge">Interativo</span>
+                <h2>Gerador de Curiosidades Caninas</h2>
+                <p>Clique no botão abaixo para descobrir fatos rápidos e impressionantes sobre a biologia dos cachorros!</p>
+                <div id="fact-display">Clique no botão abaixo para gerar uma curiosidade! 👇</div>
+                <button class="btn" onclick="generateFact()">Próxima Curiosidade 🐕</button>
+            </section>
+
+            <!-- SEÇÃO 2: LINGUAGEM COMPORTAMENTAL -->
+            <section id="linguagem" class="card">
+                <span class="badge">Comportamento</span>
+                <h2>Como Eles Falam: Desvendando Sinais Sociais</h2>
+                <p>Cachorros não usam palavras, mas o corpo deles fala o tempo todo. Entender essa linguagem evita acidentes e melhora a convivência.</p>
+                
+                <h3>O Rabo e Seus Significados</h3>
+                <p>Não ache que rabo balançando é sempre sinal de amizade! Preste atenção na postura:</p>
+                <ul>
+                    <li><strong>Balanço relaxado e amplo (com o quadril junto):</strong> Felicidade pura e excitação positiva.</li>
+                    <li><strong>Balanço rígido, alto e rápido:</strong> Sinal de alerta, tensão ou dominância. Fique atento.</li>
+                    <li><strong>Rabo entre as pernas:</strong> Medo, submissão crônica ou dor.</li>
+                </ul>
+
+                <h3>Olhar de Lado (Olho de Baleia)</h3>
+                <p>Quando um cão vira levemente a cabeça mas mantém os olhos fixos em você, mostrando a parte branca dos olhos, isso se chama "olho de baleia". É um sinal claro de que ele está muito estressado, desconfortável ou protegendo algum objeto/comida. Dê espaço a ele!</p>
+            </section>
+
+            <!-- SEÇÃO 3: SAÚDE E PERIGOS -->
+            <section id="saude" class="card">
+                <span class="badge">Saúde & Bem-Estar</span>
+                <h2>Guia de Proteção: O que seu Cão Não Pode Comer</h2>
+                <p>O sistema digestivo dos cães funciona de forma muito diferente do nosso. Algumas coisas perfeitamente seguras para humanos são venenos letais para eles.</p>
+                
+                <div class="alert-box">
+                    <h4>⚠️ Alimentos Proibidos de Emergência:</h4>
+                    <ul>
+                        <li><strong>Chocolate:</strong> Possui teobromina. Quanto mais escuro o chocolate, mais perigoso ele é. Provoca convulsões e arritmia.</li>
+                        <li><strong>Uvas e Uvas Passas:</strong> Podem causar falência renal total e imediata em alguns cães, mesmo em quantidades mínimas.</li>
+                        <li><strong>Cebola e Alho:</strong> Contêm compostos que destroem os glóbulos vermelhos do sangue do pet, causando anemia profunda.</li>
+                        <li><strong>Adoçante Xilitol:</strong> Presente em doces "zero açúcar". Causa uma queda de glicose perigosíssima e danos ao fígado.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 4: QUIZ INTERATIVO -->
+            <section id="quiz" class="card interactive-box">
+                <span class="badge">Teste Seu Conhecimento</span>
+                <h2>Super Quiz Canino</h2>
+                <p>Afinal, de onde vem o suor dos cachorros? Como eles regulam a temperatura do corpo?</p>
+                
+                <form id="dogQuiz" onsubmit="checkQuiz(event)">
+                    <input type="radio" id="opt1" name="quiz" value="errado1">
+                    <label for="opt1">Pela pele do corpo inteiro, igual aos humanos.</label><br><br>
+                    
+                    <input type="radio" id="opt2" name="quiz" value="correto">
+                    <label for="opt2">Pelas almofadinhas das patas (coxins) e pela respiração (arfando).</label><br><br>
+                    
+                    <input type="radio" id="opt3" name="quiz" value="errado2">
+                    <label for="opt3">Os cães simplesmente não suam e não precisam se refrescar.</label><br><br>
+                    
+                    <button type="submit" class="btn">Verificar Resposta</button>
+                </form>
+                <div id="quiz-result"></div>
+            </section>
+        </main>
+
+        <!-- BARRA LATERAL -->
+        <aside>
+            <div class="sidebar-box">
+                <h3>As 5 Raças Mais Inteligentes 🧠</h3>
+                <p>De acordo com a psicologia canina, estas raças aprendem comandos com menos de 5 repetições:</p>
+                <ol>
+                    <li>Border Collie</li>
+                    <li>Poodle</li>
+                    <li>Pastor Alemão</li>
+                    <li>Golden Retriever</li>
+                    <li>Doberman</li>
+                </ol>
+            </div>
+
+            <div class="sidebar-box">
+                <h3>A Verdade sobre a Idade 🎂</h3>
+                <p>Cães de porte grande envelhecem muito mais rápido! Um cão de raça gigante é considerado idoso aos 6 anos de idade, enquanto raças pequenas (como o Maltês) só chegam na terceira idade por volta dos 10 anos.</p>
+            </div>
+
+            <div class="sidebar-box">
+                <h3>Enriquecimento Mental 🧸</h3>
+                <p>Dar comida em brinquedos recheáveis ou espalhar grãos de ração pelo quintal cansa mais o cão do que uma caminhada longa! Estimular o olfato gasta muita energia mental.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Blog Cãopanheiro. Todos os direitos reservados. 🐶</p>
+    </footer>
+
+    <!-- JAVASCRIPT FUNCIONAL -->
+    <script>
+        // Array de curiosidades para o gerador aleatório
+        const facts = [
+            "O olfato dos cães é tão poderoso que eles conseguem detectar o equivalente a uma colher de chá de açúcar diluída em duas piscinas olímpicas!",
+            "As impressões digitais dos cães ficam no focinho. O padrão de linhas do nariz de cada cachorro é único no mundo todo.",
+            "Os cães não enxergam apenas em preto e branco! Eles veem o mundo em tons de azul, amarelo e cinza.",
+            "O seu cachorro consegue ouvir sons quatro vezes mais distantes do que você consegue escutar.",
+            "Quando os cães dormem encolhidos, é um instinto antigo para proteger os órgãos vitais de predadores e manter o calor.",
+            "Um Border Collie chamado Chaser ficou famoso por conseguir identificar e buscar mais de 1.000 objetos diferentes pelo nome!"
+        ];
+
+        function generateFact() {
+            const display = document.getElementById('fact-display');
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            display.innerText = facts[randomIndex];
+        }
+
+        function checkQuiz(event) {
+            event.preventDefault();
+            const options = document.getElementsByName('quiz');
+            let userChoice = "";
+            
+            for(let i = 0; i < options.length; i++) {
+                if(options[i].checked) {
+                    userChoice = options[i].value;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+            
+            if (userChoice === "correto") {
+                resultDiv.innerText = "🎉 Exato! Eles transpiram um pouco pelas patinhas, mas sua maior fonte de resfriamento é abrindo a boca e arfando (língua para fora).";
+                resultDiv.style.color = "var(--accent)";
+            } else if (userChoice === "") {
+                resultDiv.innerText = "⚠️ Por favor, escolha uma opção antes de enviar!";
+                resultDiv.style.color = "orange";
+            } else {
+                resultDiv.innerText = "❌ Incorreto. Tente de novo! Lembre-se de como eles ficam quando correm bastante no calor.";
+                resultDiv.style.color = "var(--danger)";
+            }
+        }
+    </script>
+</body>
+</html>
 
