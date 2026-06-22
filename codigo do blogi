@@ -1,125 +1,380 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog do Doguinho | Curiosidades e Dicas</title>
+    <title>Mundo Canino | O Blog Completo sobre Cachorros</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary: #d35400;
+            --primary-light: #e67e22;
+            --secondary: #2c3e50;
+            --accent: #f1c40f;
+            --bg: #fdfaf6;
+            --card-bg: #ffffff;
+            --text: #34495e;
+            --text-dark: #2c3e50;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f9f6f0;
-            color: #333;
         }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         header {
-            background-color: #ff9f43;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
+            padding: 3rem 1rem;
             text-align: center;
-            padding: 2rem 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
+
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
+
         header p {
-            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
             font-style: italic;
+            opacity: 0.9;
         }
+
         nav {
-            background-color: #ee5253;
+            background-color: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
-            padding: 0.5rem;
+            list-style: none;
+            padding: 0;
         }
+
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
+            padding: 1rem 1.5rem;
+            display: block;
             font-weight: bold;
+            transition: background 0.3s, color 0.3s;
         }
+
         nav a:hover {
-            text-decoration: underline;
+            background-color: var(--primary);
+            color: white;
         }
+
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+            display: block;
         }
-        main {
-            background: white;
+
+        @media (min-width: 768px) {
+            .container {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+            main {
+                display: table-cell;
+                width: 70%;
+                padding-right: 2rem;
+                vertical-align: top;
+            }
+            aside {
+                display: table-cell;
+                width: 30%;
+                vertical-align: top;
+            }
+        }
+
+        main, aside {
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 8px;
+            margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
         }
-        article {
-            margin-bottom: 3rem;
+
+        .card:hover {
+            transform: translateY(-2px);
         }
-        article h2 {
-            color: #ee5253;
-            margin-top: 0;
-        }
-        .meta {
-            font-size: 0.85rem;
-            color: #777;
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
-        aside {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            height: fit-content;
+
+        h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
         }
-        aside h3 {
-            color: #ff9f43;
-            margin-top: 0;
-            border-bottom: 2px solid #ff9f43;
-            padding-bottom: 0.5rem;
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
         }
-        ul {
-            padding-left: 1.2rem;
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
         }
+
         li {
             margin-bottom: 0.5rem;
         }
+
+        .badge {
+            background-color: var(--accent);
+            color: var(--text-dark);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .alert-box {
+            background-color: #fadbd8;
+            border-left: 5px solid #e74c3c;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            color: #78281f;
+        }
+
+        .interactive-section {
+            background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+            border-left: 5px solid #0288d1;
+            color: #01579b;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #b34500;
+        }
+
+        #quiz-result {
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        aside .sidebar-box {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+        }
+
+        aside h3 {
+            margin-top: 0;
+            color: var(--secondary);
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+
         footer {
-            background-color: #333;
+            background-color: var(--secondary);
             color: white;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🐾 Blog do Doguinho 🐾</h1>
-        <p>O espaço perfeito para quem é completamente apaixonado por cães!</p>
+        <h1>🐾 Mundo Canino 🐾</h1>
+        <p>O guia definitivo e divertido para o melhor amigo do homem!</p>
     </header>
 
     <nav>
-        <a href="#curiosidades">Curiosidades</a>
-        <a href="#linguagem">Linguagem Canina</a>
-        <a href="#cuidados">Dicas de Cuidados</a>
+        <div class="nav-container">
+            <a href="#curiosidades">Curiosidades</a>
+            <a href="#linguagem">Linguagem</a>
+            <a href="#cuidados">Saúde & Cuidados</a>
+            <a href="#quiz">Super Quiz</a>
+        </div>
     </nav>
 
     <div class="container">
         
         <main>
-            <article id="curiosidades">
-                <h2>5 Curiosidades Incríveis que Você Não Sabia sobre Cães</h2>
-                <div class="meta">Postado em: 22 de Junho de 2026 | Por: Humano do Dog</div>
-                <p>Os cães são nossos companheiros há milhares de anos, mas eles ainda conseguem nos surpreender! Aqui estão alguns fatos fascinantes sobre os nossos peludos:</p>
-                <ul>
-                    <li><strong>O focinho é único:</strong> Assim como as impressões digitais dos humanos, a marca do focinho de cada cachorro é totalmente única.</li>
-                    <li><strong>Super audição:</strong> Eles conseguem ouvir sons quatro vezes mais distantes do que nós, humanos.</li>
-                    <li><strong>Eles sonham como nós:</strong> Se você já viu seu cão mexendo as patinhas ou resmungando enquanto dorme, saiba que ele está sonhando! Os padrões cerebrais deles durante o sono são muito parecidos com os nossos.</li>
-                    <li><strong>O sentido do tempo:</strong> Os cães conseguem perceber a diferença de tempo. Eles sabem quando você ficou fora por uma hora ou pelo dia inteiro devido à rotina e à diminuição do seu cheiro na casa.</li>
-                </ul>
-            </article>
+            <section id="curiosidades" class="card">
+                <span class="badge">Fatos Fascinantes</span>
+                <h2>10 Curiosidades Incríveis que Você Precisa Saber</h2>
+                <p>Os cães compartilham nossas vidas há milênios, mas eles guardam segredos biológicos e comportamentais impressionantes. Veja estes fatos:</p>
+                <ol>
+                    <li><strong>Focinho único:</strong> A marca do nariz de um cachorro é equivalente à impressão digital humana. Nenhuma é igual à outra!</li>
+                    <li><strong>Sentido do tempo:</strong> Eles percebem a rotina e sabem exatamente quando está chegando a hora do passeio ou da comida pelo enfraquecimento do seu cheiro no ambiente ao longo do dia.</li>
+                    <li><strong>Super audição:</strong> Um cão consegue escutar frequências sonoras de até 45.000 Hz, enquanto o limite dos humanos é de cerca de 20.000 Hz.</li>
+                    <li><strong>Inteligência notável:</strong> A raça Border Collie lidera o ranking de inteligência canina, sendo capaz de aprender um novo comando com menos de 5 repetições.</li>
+                    <li><strong>Gosto reduzido:</strong> Enquanto nós humanos temos cerca de 9.000 papilas gustativas, os cães têm apenas 1.700. Eles se importam muito mais com o cheiro da comida do que com o gosto!</li>
+                </ol>
+            </section>
+
+            <section id="linguagem" class="card">
+                <span class="badge">Comportamento</span>
+                <h2>Como Entender a Linguagem Corporal do seu Cão</h2>
+                <p>Muitas vezes achamos que sabemos tudo o que nossos pets dizem, mas a ciência mostra que alguns sinais comuns são amplamente mal interpretados:</p>
+                
+                <h3>O Mito do Rabo Abanando</h3>
+                <p>Nem todo abano de rabo significa alegria. Um rabo abanando de forma rígida, alta e rápida pode indicar alerta ou agressividade iminente. O abano de felicidade real envolve o corpo todo e o rabo faz movimentos circulares ou mais relaxados para o lado direito.</p>
+
+                <h3>O Olhar de Culpado</h3>
+                <p>Quando você chega em casa e encontra o sapato roído, o cachorro abaixa as orelhas e desvia o olhar. Aquilo não é culpa! Estudos de comportamento animal comprovaram que aquela expressão é uma resposta de submissão e medo ao tom de voz bravo ou à postura do tutor.</p>
+                
+                <h3>Bocejos fora de hora</h3>
+                <p>Se o seu cão boceja quando não está com sono (por exemplo, durante uma consulta ao veterinário ou quando recebe um abraço muito apertado), ele está tentando aliviar o próprio estresse e comunicando que precisa de espaço.</p>
+            </section>
+
+            <section id="cuidados" class="card">
+                <span class="badge">Saúde Animal</span>
+                <h2>Guia de Cuidados Essenciais e Perigos Ocultos</h2>
+                <p>Cuidar da saúde do seu amigo exige atenção redobrada, principalmente com o que ele consome de forma acidental.</p>
+                
+                <div class="alert-box">
+                    <strong>⚠️ ATENÇÃO: Alimentos Altamente Tóxicos!</strong>
+                    <ul>
+                        <li><strong>Chocolate:</strong> Contém teobromina, substância que o organismo canino não metaboliza, afetando o sistema nervoso e coração.</li>
+                        <li><strong>Uvas e Passas:</strong> Podem causar insuficiência renal aguda mesmo em pequenas quantidades.</li>
+                        <li><strong>Cebola e Alho:</strong> Danificam os glóbulos vermelhos do sangue, podendo causar anemia grave.</li>
+                        <li><strong>Xilitol (Adoçante):</strong> Encontrado em chicletes e doces dietéticos, causa queda abrupta de açúcar no sangue e falência hepática.</li>
+                    </ul>
+                </div>
+
+                <h3>Cálculo Real da Idade Canina</h3>
+                <p>Diga adeus à regra de multiplicar por 7! O envelhecimento varia drasticamente pelo porte físico. Um cachorro de porte grande atinge a senioridade muito mais rápido (por volta dos 6 anos) do que um cão de porte pequeno, que pode ser considerado idoso apenas aos 10 anos.</p>
+            </section>
+
+            <section id="quiz" class="card interactive-section">
+                <span class="badge" style="background-color: var(--secondary); color: white;">Interativo</span>
+                <h2>Desafio Canino: Teste seus Conhecimentos!</h2>
+                <p>Qual das alternativas abaixo descreve o sentido mais aguçado de um cachorro?</p>
+                
+                <form id="dogQuiz" onsubmit="checkQuiz(event)">
+                    <input type="radio" id="q1" name="quiz_opt" value="visao">
+                    <label for="q1">A) Visão (Eles enxergam perfeitamente no escuro total)</label><br><br>
+                    
+                    <input type="radio" id="q2" name="quiz_opt" value="olfato">
+                    <label for="q2">B) Olfato (Eles têm até 300 milhões de receptores olfativos)</label><br><br>
+                    
+                    <input type="radio" id="q3" name="quiz_opt" value="paladar">
+                    <label for="q3">C) Paladar (Eles saboreiam os alimentos melhor que os humanos)</label><br><br>
+                    
+                    <button type="submit" class="btn">Enviar Resposta</button>
+                </form>
+                
+                <div id="quiz-result"></div>
+            </section>
+        </main>
+
+        <aside>
+            <div class="sidebar-box">
+                <h3>As 5 Raças Mais Inteligentes 🧠</h3>
+                <ol>
+                    <li>Border Collie</li>
+                    <li>Poodle</li>
+                    <li>Pastor Alemão</li>
+                    <li>Golden Retriever</li>
+                    <li>Doberman</li>
+                </ol>
+            </div>
+
+            <div class="sidebar-box">
+                <h3>Dica do Dia 💡</h3>
+                <p>Mantenha sempre água fresca e limpa para o seu cão. Cães não suam pelo corpo como nós, eles fazem a troca de calor pela respiração (arfando) e precisam estar bem hidratados para se refrescarem!</p>
+            </div>
+
+            <div class="sidebar-box">
+                <h3>Brinquedos Ideais 🧸</h3>
+                <p>Brinquedos de enriquecimento ambiental (como aqueles que você esconde petiscos dentro) ajudam a gastar energia mental e reduzem a ansiedade de cães que passam tempo sozinhos.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mundo Canino Blog. Desenvolvido com carinho para todos os gateiros e cachorreiros! 🐾</p>
+    </footer>
+
+    <script>
+        function checkQuiz(event) {
+            event.preventDefault();
+            const options = document.getElementsByName('quiz_opt');
+            let selectedValue = "";
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    selectedValue = options[i].value;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+            if (selectedValue === "olfato") {
+                resultDiv.innerHTML = "🎉 Correto! O olfato é o sentido mais poderoso do cão, sendo até 100.000 vezes mais sensível que o nosso!";
+                resultDiv.style.color = "#1b5e20";
+            } else if (selectedValue === "") {
+                resultDiv.innerHTML = "⚠️ Por favor, selecione uma resposta antes de enviar.";
+                resultDiv.style.color = "#b71c1c";
+            } else {
+                resultDiv.innerHTML = "❌ Incorreto! Tente novamente. Dica: Pense no focinho deles!";
+                resultDiv.style.color = "#b71c1c";
+            }
+        }
+    </script>
+
+</body>
+</html>
+\"\"\"
+
+with open("blog_de_cachorro.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
